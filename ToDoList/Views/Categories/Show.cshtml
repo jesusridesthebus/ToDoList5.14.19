@@ -17,6 +17,9 @@
 
 <h4>Add a new item to this category:</h4>
 <form action="/items" method="post">
+  @* <form action='/categories/@Model["category"].GetId()/items/new' method="post"> *@
+
+  <input for="hiddenId" id="hiddenId" name="hiddenId" type="hidden" value="@Model["category"].GetId()">
   <label for="description">Item description:</label>
   <input id="description" name="description" type="text">
   <button type="submit">Add new item</button>
