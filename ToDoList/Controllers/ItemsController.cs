@@ -8,11 +8,26 @@ namespace ToDoList.Controllers
   public class ItemsController : Controller
   {
 
-    [HttpGet("/categories/{categoryId}/items/new")]
-    public ActionResult New(int categoryId)
+    [HttpGet("/items")]
+    public ActionResult Index()
     {
-       Category category = Category.Find(categoryId);
-       return View(category);
+      List<Item> allItems = Item.GetAll();
+      return View(allItems);
+    }
+
+    [HttpGet("/items/new")]
+    public ActionResult New()
+    {
+      return View();
+    }
+
+    [HttpPost("/items")]
+    public ActionResult Create(string description)
+    {
+      Item newItem = new Item(description);
+      newItem.Save();
+      List<Item> allItems = Item.GetAll();
+      return View("Index", allItems);
     }
 
     [HttpGet("/categories/{categoryId}/items/{itemId}")]

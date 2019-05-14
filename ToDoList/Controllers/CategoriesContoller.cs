@@ -25,9 +25,9 @@ namespace ToDoList.Controllers
     public ActionResult Create(string categoryName)
     {
       Category newCategory = new Category(categoryName);
-      List<Category> allCategories = Category.GetAll();
       newCategory.Save();
-      return RedirectToAction("Index");
+      List<Category> allCategories = Category.GetAll();
+      return View("Index", allCategories);
     }
 
     // [HttpGet("/categories/{id}")]
@@ -39,19 +39,6 @@ namespace ToDoList.Controllers
     //   model.Add("category", selectedCategory);
     //   model.Add("categoryItems", categoryItems);
     //   return View(selectedCategory);
-    // }
-    // 
-    // [HttpPost("/categories/{categoryId}/items")]
-    // public ActionResult Create(int categoryId, string itemDescription)
-    // {
-    //   Category foundCategory = Category.Find(categoryId);
-    //   Item newItem = new Item(itemDescription, categoryId);
-    //   newItem.Save();
-    //   foundCategory.GetItems();
-    //   // List<Item> categoryItems = foundCategory.GetItems();
-    //   // model.Add("items", categoryItems);
-    //   // model.Add("category", foundCategory);
-    //   return View("Show", foundCategory);
     // }
 
     [HttpPost("/categories/{categoryId}/delete")]
