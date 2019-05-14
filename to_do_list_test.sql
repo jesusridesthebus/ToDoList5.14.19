@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 09, 2019 at 03:22 PM
+-- Generation Time: May 14, 2019 at 06:33 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `todolist_tests`
+-- Database: `to_do_list_test`
 --
-CREATE DATABASE IF NOT EXISTS `todolist_tests` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `todolist_tests`;
+CREATE DATABASE IF NOT EXISTS `to_do_list_test` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `to_do_list_test`;
 
 -- --------------------------------------------------------
 
@@ -29,8 +29,20 @@ USE `todolist_tests`;
 --
 
 CREATE TABLE `categories` (
+  `Id` int(11) NOT NULL,
+  `Name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories_items`
+--
+
+CREATE TABLE `categories_items` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `category_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -41,9 +53,16 @@ CREATE TABLE `categories` (
 
 CREATE TABLE `items` (
   `id` int(11) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `category_id` int(11) NOT NULL
+  `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`id`, `description`) VALUES
+(1, 'Mow the lawn'),
+(2, 'Mow the lawn');
 
 --
 -- Indexes for dumped tables
@@ -53,6 +72,12 @@ CREATE TABLE `items` (
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `categories_items`
+--
+ALTER TABLE `categories_items`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -69,13 +94,19 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `categories_items`
+--
+ALTER TABLE `categories_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -151,7 +151,6 @@ namespace ToDoList.Models
       }
     }
 
-
     public List<Item> GetItems()
     {
       MySqlConnection conn = DB.Connection();
@@ -181,7 +180,6 @@ namespace ToDoList.Models
       }
       return items;
     }
-
 
     public static void DeleteAll()
     {
