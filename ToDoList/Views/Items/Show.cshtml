@@ -27,8 +27,10 @@
   </select>
   <button type='submit'>Add</button>
 </form>
+<form action='/categories/@Model["category"].GetId()/items/@Model["selectedItem"].GetId()/delete' method="post">
+  <button type='submit'>Delete Item</button>
+</form>
 
-<a href='/categories/@Model["category"].GetId()/items/@Model["selectedItem"].GetId()/delete'>Delete this Item</a>
 <a href='/categories/@Model["category"].GetId()/items/@Model["selectedItem"].GetId()/edit'>Edit this Item</a>
 <a href='/categories/@Model["category"].GetId()/items/new'>Add another item</a>
 <a href='/categories'>View all categories</a>
