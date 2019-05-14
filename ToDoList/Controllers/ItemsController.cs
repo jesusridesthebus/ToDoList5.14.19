@@ -37,12 +37,13 @@ namespace ToDoList.Controllers
       Item selectedItem = Item.Find(id);
       List<Category> itemCategories = selectedItem.GetCategories();
       List<Category> allCategories = Category.GetAll();
+      Category itemsCategory = Category.Find(id);
+      model.Add("category", itemsCategory);
       model.Add("selectedItem", selectedItem);
       model.Add("itemCategories", itemCategories);
       model.Add("allCategories", allCategories);
       return View(model);
     }
-
 
     [HttpPost("/items/delete")]
     public ActionResult DeleteAll()
